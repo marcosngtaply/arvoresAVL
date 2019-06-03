@@ -12,8 +12,9 @@ public class EmptyListException extends Exception {
 	
 	//construtor de um argumento
 	public EmptyListException(String name) {
-		super("A lista: " + name + " - está vazia"); //chama construtor de superclasse
+		super("A lista: " + name + " - estï¿½ vazia"); //chama construtor de superclasse
 	}//fim do construtor de um argumento EmptyException
 }	//fim da classe EmptyListException
 
 
+//tay
