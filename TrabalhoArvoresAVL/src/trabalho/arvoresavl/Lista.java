@@ -22,8 +22,8 @@ public class Lista {
 		primeiroNo = ultimoNo = null;
 		this.tamanhoLista = 0;
 	}// fim do construtor de um argumento List
-	// Insere Object na frente de List
-	public void insereNoInicio(String insertItem) {
+	
+	public void insereNoInicio(String insertItem) { // Insere Object na frente de List
 		
 		if (estaVazia()) {	// primeiro e ultimo nó referenciam o mesmo objeto
 			primeiroNo = ultimoNo = new ListaNo(insertItem);
@@ -58,7 +58,7 @@ public class Lista {
 			}
 			String removedItem = primeiroNo.palavraNo; // recupera dados sendo removidos
 			// atualiza referências primeiroNo e ultimoNo
-			if (primeiroNo == ultimoNo) {
+			if (primeiroNo.equals(ultimoNo) ) {
 				primeiroNo = ultimoNo = null;
 			} else {
 				primeiroNo = primeiroNo.proximoNo;
@@ -75,7 +75,7 @@ public class Lista {
 			
 			//atualiza referências primeiroNo e ultimoNo
 			
-			if(primeiroNo == ultimoNo){
+			if(primeiroNo.equals(ultimoNo)){
 				primeiroNo = ultimoNo = null;
 			}
 			
@@ -83,7 +83,7 @@ public class Lista {
 				ListaNo current = primeiroNo;
 			
 				//faz loop enquanto nó atual não referencia lastNode
-				while(current.proximoNo != ultimoNo){
+				while(!current.proximoNo.equals(ultimoNo) ){
 					current = current.proximoNo;
 				} 
 				
