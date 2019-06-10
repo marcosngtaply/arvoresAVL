@@ -31,10 +31,12 @@ public class Lista {
 			ultimoNo.setNoPosicao(primeiroNo.getNoPosicao());
 		} 
 		else {
-			ultimoNo = primeiroNo;
 			//primeiroNo = new ListaNo(insertItem, primeiroNo);
 			primeiroNo = new ListaNo(insertItem, primeiroNo);
-			primeiroNo.proximoNo.setNoPosicao(ultimoNo.getNoPosicao() + 1);
+			primeiroNo.setNoPosicao(1);
+			ultimoNo.posicao++;
+			primeiroNo.proximoNo.setNoPosicao(ultimoNo.posicao);
+			
 			
 			//primeiroNo.setNoPosicao(primeiroNo.getNoPosicao() - 1);
 			
