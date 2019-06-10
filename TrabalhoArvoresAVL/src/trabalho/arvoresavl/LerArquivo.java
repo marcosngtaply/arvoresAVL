@@ -9,29 +9,31 @@ import javax.swing.JOptionPane;
 public class LerArquivo {
 	
 	private String nomeArq;//Endereço do arquivo no computador
-	
+	private String[] vetorLista;
 	public LerArquivo() {
 		this.nomeArq = "./Arquivos/Professores.csv";
 	}
 
-	public LerArquivo(String local) {
+	public LerArquivo(String local, String[] vetorLista) {
 		this.nomeArq = local;
+		this.vetorLista = vetorLista;
 	}
 	
-	public void leitura() {
+	public String[] leitura() {
 		
+		int tam = 100;
+		String[] professores = new String[tam];
 			
-			try {
+		try {
 				FileReader localArq = new FileReader(nomeArq);
 				BufferedReader leitorDeLinhas = new BufferedReader(localArq);
 				
 				String linha = " "; 
 
 				linha = leitorDeLinhas.readLine();
-				
-				String[] professores = new String[100];
-				int i = 0;
 					
+				int i = 0;
+				
 				while(linha != null) {
 						professores[i] = linha;
 						linha = leitorDeLinhas.readLine();
@@ -48,10 +50,27 @@ public class LerArquivo {
 				JOptionPane.showMessageDialog(null,"Erro na leitura do arquivo: " + 
 		                e.getMessage());
 		    }
-			
-			
+			this.vetorLista = professores;
+		return vetorLista;	
 			
 	}
+
+	public String getNomeArq() {
+		return nomeArq;
+	}
+
+	public void setNomeArq(String nomeArq) {
+		this.nomeArq = nomeArq;
+	}
+
+	public String[] getVetorLista() {
+		return vetorLista;
+	}
+
+	public void setVetorLista(String[] vetorLista) {
+		this.vetorLista = vetorLista;
+	}
+	
 }
 	
 

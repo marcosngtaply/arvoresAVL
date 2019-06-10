@@ -27,9 +27,18 @@ public class Lista {
 		
 		if (estaVazia()) {	// primeiro e ultimo nó referenciam o mesmo objeto
 			primeiroNo = ultimoNo = new ListaNo(insertItem);
+			primeiroNo.setNoPosicao(1);
+			ultimoNo.setNoPosicao(primeiroNo.getNoPosicao());
 		} 
 		else {
+			ultimoNo = primeiroNo;
+			//primeiroNo = new ListaNo(insertItem, primeiroNo);
 			primeiroNo = new ListaNo(insertItem, primeiroNo);
+			primeiroNo.proximoNo.setNoPosicao(ultimoNo.getNoPosicao() + 1);
+			
+			//primeiroNo.setNoPosicao(primeiroNo.getNoPosicao() - 1);
+			
+			
 		}	// fim do método insereNoInicio
 		
 		this.tamanhoLista++;
@@ -39,8 +48,15 @@ public class Lista {
 	public void insereNoFim(String insertItem) {
 		if (estaVazia()) {
 			primeiroNo = ultimoNo = new ListaNo(insertItem);
+			primeiroNo.setNoPosicao(1);
+			ultimoNo.setNoPosicao(primeiroNo.getNoPosicao());
 		} else {
-			ultimoNo = ultimoNo.proximoNo = new ListaNo(insertItem);
+			ultimoNo.proximoNo = new ListaNo(insertItem);//1
+			//ultimoNo = ultimoNo.proximoNo = new ListaNo(insertItem);
+			ultimoNo.proximoNo.setNoPosicao(ultimoNo.getNoPosicao() + 1);
+			//ultimoNo.setNoPosicao(ultimoNo.getNoPosicao() + 1);
+			ultimoNo = ultimoNo.proximoNo;
+
 		}
 		this.tamanhoLista++;
 	}// fim do método insereNoFim
@@ -119,12 +135,12 @@ public class Lista {
 			return;
 		}// fim do if
 		
-		System.out.printf("A lista %s é: ", nome);
+		System.out.printf("A lista %s é: \n", nome);
 		ListaNo current = primeiroNo;
 		// enquanto não estiver no fim da lista, gera saída dos dados do nó
 		// atual
 		while (current != null) {
-			System.out.printf("%s -> ", current.palavraNo);
+			System.out.printf(current.posicao + "%s -> ", current.palavraNo);
 			current = current.proximoNo;
 		}// fim do While
 		System.out.printf("\n");
